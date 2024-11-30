@@ -1,12 +1,9 @@
 -- Add you solution queries below:
 #How many copies of the film Hunchback Impossible exist in the inventory system?
 
-select count(i.inventory_id) num_hunch
-from sakila.inventory i
-where i.film_id = (select film_id from sakila.film
-where title = 'Hunchback Impossible')
-and i.inventory_id not in (select inventory_id from sakila.rental 
-where return_date is null);
+SELECT COUNT(i.inventory_id) AS num_hunch
+FROM sakila.inventory i
+WHERE i.film_id = (SELECT film_id FROM sakila.film WHERE title = 'Hunchback Impossible');
 
 #List all films whose length is longer than the average of all the films.
 select f.title, f.length
